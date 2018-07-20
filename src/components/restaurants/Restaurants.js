@@ -3,13 +3,13 @@ import Restaurant from "./Restaurant";
 
 class Restaurants extends Component {
   render() {
-    const restaurants = this.props.store
+    const { store } = this.props;
+    const restaurants = store
       .getState()
-      .restaurants.map((res, idx) => {
-        return (
-          <Restaurant key={idx} restaurant={res} store={this.props.store} />
-        );
+      .restaurants.map((restaurant, index) => {
+        return <Restaurant key={index} restaurant={restaurant} store={store} />;
       });
+
     return <ul>{restaurants}</ul>;
   }
 }
